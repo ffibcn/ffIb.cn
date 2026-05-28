@@ -550,11 +550,11 @@
             <ul class="space-y-3 text-gray-700">
                 <li class="flex flex-wrap gap-x-2">
                     <span class="font-semibold text-gray-600 min-w-[80px]">委托单位：</span>
-                    <span class="flex-1">石狮市俊伟经编布业有限公司</span>
+                    <span class="flex-1">福建南平市依尔婴服饰有限公司</span>
                 </li>
                 <li class="flex flex-wrap gap-x-2">
                     <span class="font-semibold text-gray-600 min-w-[80px]">产品名称：</span>
-                    <span class="flex-1">40支南韩棉（双染）面料</span>
+                    <span class="flex-1">T400破卡</span>
                 </li>
                 <li class="flex flex-wrap gap-x-2">
                     <span class="font-semibold text-gray-600 min-w-[80px]">出证日期：</span>
@@ -568,7 +568,7 @@
                 </li>
                 <li class="flex flex-wrap gap-x-2">
                     <span class="font-semibold text-gray-600 min-w-[80px]">产品款号：</span>
-                    <span class="flex-1" style="word-break: break-all;">6#丈青（2025121991）</span>
+                    <span class="flex-1" style="word-break: break-all;">4#藏青（2025121994）</span>
                 </li>
             </ul>
 
@@ -578,17 +578,40 @@
 
             <!-- 操作按钮 -->
             <div class="flex justify-center gap-4">
-                <a href="https://ffib.cn/NR/getBg.php?date=20260310&amp;bg=M26003286_40%D6%A7%C4%CF%BA%AB%C3%DE%A3%A8%CB%AB%C8%BE%A3%A9%C3%E6%C1%CF_6%D5%C9%C7%E0%A3%A82025121991%A3%A9_%BA%CF%B8%F1"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md shadow transition duration-200 whitespace-nowrap">
-                在线预览
-            </a>
-            <a href="download.php?date=20260310&amp;bg=M26003286_40支南韩棉（双染）面料_6丈青（2025121991）_合格"
-            onclick="window.location.href = 'download.php?date=20260310&bg=M26003286_40支南韩棉（双染）面料_6丈青（2025121991）_合格'; return false;"
-            class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-8 rounded-md shadow transition duration-200 whitespace-nowrap">
-            下载报告
-        </a>
+                <a href="https://ffibcn.github.io/ffIb.cn/M26003289_T400%E7%A0%B4%E5%8D%A1_4%23%E8%97%8F%E9%9D%92%EF%BC%882025121994%EF%BC%89_%E5%90%88%E6%A0%BC.pdf"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md shadow transition duration-200 whitespace-nowrap">
+			在线预览
+			</a>
+			
+            <a href="javascript:void(0);"
+		   onclick="downloadPDF()"
+		   class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-8 rounded-md shadow transition duration-200 whitespace-nowrap">
+		   下载报告
+		</a>
+		
+		<script>
+		function downloadPDF() {
+		    const url = "https://ffibcn.github.io/ffIb.cn/M26003289_T400%E7%A0%B4%E5%8D%A1_4%23%E8%97%8F%E9%9D%92%EF%BC%882025121994%EF%BC%89_%E5%90%88%E6%A0%BC.pdf";
+		    const filename = "M26003289_T400破卡_4#藏青（2025121994）_合格.pdf";
+		    fetch(url)
+		        .then(response => response.blob())
+		        .then(blob => {
+		            const link = document.createElement('a');
+		            const objectUrl = URL.createObjectURL(blob);
+		            link.href = objectUrl;
+		            link.download = filename;
+		            document.body.appendChild(link);
+		            link.click();
+		            document.body.removeChild(link);
+		            URL.revokeObjectURL(objectUrl);
+		        })
+		        .catch(err => console.error('下载失败:', err));
+		}
+		</script>
+		
+		
     </div>
 </section>
 
