@@ -239,30 +239,37 @@ body{background:#e8f1ff;color:#333;min-height:100vh;font-size:16px;-webkit-text-
             <div class="info-value">2026/09/02</div>
         </div>
         <!-- ? 查看检测报告（居中） -->
-		<!-- 按钮触发预览 -->
-		<div class="info-row report-row">
-		    <button class="report-btn" onclick="previewPDF()">
-		        <img class="report-icon" src="https://ffib.cn/NR/images/bgbtn.png" alt="报告图标">
-		        查看检测报告
-		    </button>
-		</div>
-		
-		<!-- 用于显示 PDF 的容器（初始隐藏） -->
-		<div id="pdfContainer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; background:rgba(0,0,0,0.5);">
-		    <div style="width:90%; height:90%; margin:5% auto; background:#fff; border-radius:8px; overflow:hidden; position:relative;">
-		        <button onclick="closePDF()" style="position:absolute; top:10px; right:20px; z-index:10; font-size:30px; background:none; border:none; cursor:pointer;">✕</button>
-		        <iframe src="https://files.yierying.net/video/W26061023_中学夏季校服_无_合格.pdf" style="width:100%; height:100%; border:none;"></iframe>
-		    </div>
-		</div>
-		
-		<script>
-		function previewPDF() {
-		    document.getElementById('pdfContainer').style.display = 'block';
-		}
-		function closePDF() {
-		    document.getElementById('pdfContainer').style.display = 'none';
-		}
-		</script>
+        <div class="info-row report-row">
+            <button class="report-btn" onclick="handlePDF()">
+                <img class="report-icon" src="https://ffib.cn/NR/images/bgbtn.png" alt="报告图标">
+                查看检测报告
+            </button>
+        </div>
+        
+        <!-- 保留 iframe 容器（桌面端使用） -->
+        <div id="pdfContainer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; background:rgba(0,0,0,0.5);">
+            <div style="width:90%; height:90%; margin:5% auto; background:#fff; border-radius:8px; overflow:hidden; position:relative;">
+                <button onclick="closePDF()" style="position:absolute; top:10px; right:20px; z-index:10; font-size:30px; background:none; border:none; cursor:pointer;">✕</button>
+                <iframe id="pdfIframe" src="" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+        </div>
+        
+        <script>
+        function handlePDF() {
+            var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            var pdfUrl = "https://ffibcn.github.io/ffIb.cn/W26061023_中学夏季校服_无_合格.pdf";
+            if (isMobile) {
+                window.open(pdfUrl, "_blank");
+            } else {
+                document.getElementById('pdfIframe').src = pdfUrl;
+                document.getElementById('pdfContainer').style.display = 'block';
+            }
+        }
+        function closePDF() {
+            document.getElementById('pdfContainer').style.display = 'none';
+            document.getElementById('pdfIframe').src = ''; // 停止加载
+        }
+        </script>
     </div>
 </div>
 
