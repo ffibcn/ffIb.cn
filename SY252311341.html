@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://ffib.cn/NR/traceability.php?rpid=MTkyMzA3NTQ3MjA= -->
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>国家纺织服装产品质量检验检测中心（福建）- 产品溯源</title>
+
+<style>
+/* ===== 全局 ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+body{background:#e8f1ff;color:#333;min-height:100vh;font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+/* ===== 头部 ===== */
+.header img{width:100%;height:auto;display:block}
+
+/* ===== 导航 ===== */
+.nav{display:flex;justify-content:space-around;background:#fff;border-bottom:1px solid #e8edf3;position:sticky;top:0;z-index:100}
+.nav-item{flex:none;padding:13px 10px;font-size:16px;font-weight:600;color:#666;cursor:pointer;position:relative;white-space:nowrap}
+.nav-item.active{color:#1a73e8}
+.nav-item.active::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:3px;background:#1a73e8;border-radius:3px 3px 0 0}
+
+/* ===== 内容区 ===== */
+.content-area{padding:15px 15px 0;display:none}
+.content-area.active{display:block}
+
+/* ===== 卡片 ===== */
+.card{background:#ffffff;border-radius:14px;padding:6px 18px;box-shadow:0 2px 10px rgba(26,115,232,.08);margin-bottom:15px}
+
+/* ===== 样品图 ===== */
+.product-image-section{padding:0;overflow:hidden;border-radius:12px;margin-bottom:15px}
+.product-image-section img{width:100%;height:180px;object-fit:cover;display:block}
+
+/* ===== 检测状态提示 ===== */
+.sample-status{
+    text-align:center;
+    font-size:15px;
+    color:#1aad19;
+    padding:14px 16px;
+    margin:0 0 15px;
+    border:2px solid #1aad19;
+    border-radius:12px;
+    background:#f0faf0;
+    line-height:1.8;
+    letter-spacing:.6px;
+}
+.sample-status span{
+    font-size:17px;
+    font-weight:800;
+    color:#1aad19;
+}
+
+/* ===== 信息行 ===== */
+.info-row{display:flex;padding:14px 0;border-bottom:1px solid #e8f0ff;align-items:center}
+.info-row:last-child{border-bottom:none}
+.info-label{width:90px;font-size:15px;color:#888;flex-shrink:0}
+.info-value{flex:1;font-size:16px;color:#222;font-weight:500;word-break:break-all}
+
+/* ===== 检测报告按钮所在行（居中） ===== */
+.report-row{
+    justify-content:center;
+    background:transparent;
+}
+
+/* ===== 检测报告按钮 ===== */
+.report-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(135deg,#1a73e8,#428df8);
+    color:#fff;
+    border-radius:28px;
+    padding:15px 38px;
+    font-size:16px;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(26,115,232,.35);
+    transition:transform .15s ease,box-shadow .15s ease;
+}
+.report-btn:hover{
+    transform:scale(1.03);
+    box-shadow:0 8px 22px rgba(26,115,232,.45);
+}
+.report-btn:active{
+    transform:scale(.98);
+}
+.report-btn img.report-icon{
+    width:20px;
+    height:20px;
+    margin:0;
+    display:inline-block;
+    flex-shrink:0;
+    filter:brightness(0) invert(1);
+}
+
+/* ===== 企业信息 ===== */
+.company-header{display:flex;align-items:center;gap:10px;padding:15px 0;border-bottom:1px solid #e8f0ff}
+.company-name{font-size:16px;font-weight:bold;color:#333}
+.company-badge{
+    background:#1aad19;
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:20px;
+    margin-left:8px;
+    letter-spacing:.5px;
+    box-shadow:0 2px 6px rgba(26,173,25,.3);
+}
+.company-row{display:flex;padding:14px 0;border-bottom:1px solid #e8f0ff;align-items:center}
+.company-row:last-child{border-bottom:none}
+.company-label{width:110px;font-size:15px;color:#888;flex-shrink:0}
+.company-value{flex:1;font-size:16px;color:#222;line-height:1.5}
+
+/* ===== 单位简介 ===== */
+.institution{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.inst-header{background:#1a73e8;color:#fff;font-size:16px;font-weight:600;padding:10px 16px}
+.inst-body{padding:16px;font-size:14px;color:#666;line-height:1.8;text-indent:2em}
+
+/* ===== 资质横幅（蓝底白字·单列） ===== */
+.org-banner{
+    background:linear-gradient(135deg,#1a73e8,#306cde);
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:20px 16px;
+    box-shadow:0 6px 18px rgba(26,115,232,.3);
+}
+.org-title{
+    font-size:17px;
+    font-weight:800;
+    text-align:center;
+    letter-spacing:1px;
+    margin-bottom:14px;
+    color:#fff;
+}
+.org-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:5px 0;/* ? 间距从8→5 */
+}
+.org-item{
+    font-size:13px;/* ? 字号从13→12 */
+    line-height:1.5;/* ? 行距从1.8→1.5 */
+    padding:6px 10px; /* ? 内边距从10/14→6/10 */
+    word-break:break-all;
+    color:#fff;
+    background:rgba(255,255,255,.18);
+    border-radius:10px;
+    text-align:left;
+    letter-spacing:.3px;
+}
+
+/* ===== 联系信息块 ===== */
+/* ===== 联系信息块（整体收矮） ===== */
+.contact-block{
+    margin:10px 15px;              /* ? 上下外边距缩小 */
+    background:#fff;
+    border-radius:12px;
+    padding:4px 14px;              /* ? 从12→4，大幅收矮 */
+    box-shadow:0 1px 6px rgba(0,0,0,.04);
+}
+
+/* ===== 每一行高度缩小 ===== */
+.contact-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:6px 0;                 /* ? 从10→6，行更紧 */
+}
+.contact-row+.contact-row{
+    border-top:1px solid #f0f0f0;
+}
+.contact-row+.contact-row{border-top:1px solid #f0f0f0}
+.contact-icon{width:28px;height:28px;background:#1a73e8;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:16px;height:16px;fill:#fff}
+.contact-value{flex:1;font-size:13px;color:#555;line-height:1.5;word-break:break-all}
+
+/* ===== 新媒体矩阵 ===== */
+.media{background:#e8f1ff;padding:16px;margin:0 15px 15px;border-radius:0 0 12px 12px}
+.media-title{font-size:15px;font-weight:600;color:#1f2c5c;text-align:center;margin-bottom:14px}
+.media-list{display:flex;justify-content:space-between;gap:10px}
+.media-item{flex:1;background:#fff;border-radius:10px;padding:12px 6px;text-align:center;font-size:12px;color:#666}
+.media-item img{width:56px;height:56px;margin-bottom:8px;object-fit:contain}
+
+/* ===== 页脚 ===== */
+.footer{text-align:center;padding:12px 15px 20px;font-size:15px;color:#000;line-height:1.8;background:#e8f1ff}
+
+@media(max-width:360px){
+    .nav-item{font-size:15px;padding:13px 8px}
+    .org-item{font-size:11px}
+    .contact-value{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== 头部 ===== -->
+<div class="header">
+    <img src="https://ffib.cn/NR/images/topxf1.png" alt="">
+</div>
+
+<!-- ===== 导航 ===== -->
+<div class="nav">
+    <div class="nav-item active" onclick="switchTab(&#39;sample&#39;)">质量信息</div>
+    <div class="nav-item" onclick="switchTab(&#39;intro&#39;)">机构简介</div>
+    <div class="nav-item" onclick="switchTab(&#39;company&#39;)">企业信息</div>
+</div>
+
+<!-- ===== Tab1 样品信息 ===== -->
+<div class="content-area active" id="tab-sample">
+
+    <!-- 样品图images/HT.jpg -->
+    <div class="product-image-section">
+       
+		<img src="https://files.yierying.net/video/image/DSC05633.JPG" alt="样品示意图">
+	</div>
+
+    <!-- 检测状态提示 -->
+    <div class="sample-status">
+        当前样品已通过政府第三方机构检测：<span>合格</span>
+    </div>
+    
+    <div class="card">
+        <div class="info-row">
+            <div class="info-label">防伪码</div>
+            <div class="info-value">SY252311341</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">委托单位</div>
+            <div class="info-value">福建南平市依尔婴服饰有限公司</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">产品名称</div>
+            <div class="info-value">中学冬季校服</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">报告日期</div>
+            <div class="info-value">2026/09/04</div>
+        </div>
+		
+		
+        <!-- ? 查看检测报告（居中） -->
+		<div class="info-row report-row">
+		    <button class="report-btn" onclick="handlePDF()">
+		        <img class="report-icon" src="https://ffib.cn/NR/images/bgbtn.png" alt="报告图标">
+		        查看检测报告
+		    </button>
+		</div>
+		
+		<!-- 保留 iframe 容器（桌面端使用） -->
+		<div id="pdfContainer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; background:rgba(0,0,0,0.5);">
+		    <div style="width:90%; height:90%; margin:5% auto; background:#fff; border-radius:8px; overflow:hidden; position:relative;">
+		        <button onclick="closePDF()" style="position:absolute; top:10px; right:20px; z-index:10; font-size:30px; background:none; border:none; cursor:pointer;">✕</button>
+		        <iframe id="pdfIframe" src="" style="width:100%; height:100%; border:none;"></iframe>
+		    </div>
+		</div>
+		
+		<script>
+		function handlePDF() {
+		    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+		    var pdfUrl = "https://ffibcn.github.io/ffIb.cn/W26061035B_中学冬季校服_无_合格.pdf";
+		    if (isMobile) {
+		        window.open(pdfUrl, "_blank");
+		    } else {
+		        document.getElementById('pdfIframe').src = pdfUrl;
+		        document.getElementById('pdfContainer').style.display = 'block';
+		    }
+		}
+		function closePDF() {
+		    document.getElementById('pdfContainer').style.display = 'none';
+		    document.getElementById('pdfIframe').src = ''; // 停止加载
+		}
+		</script>
+    </div>
+</div>
+
+
+
+<!-- ===== Tab2 机构简介 ===== -->
+<div class="content-area" id="tab-intro">
+    <div class="institution">
+        <div class="inst-header">福建纤检</div>
+        <div class="inst-body">
+           福建省纤维检验中心成立于1986年，是隶属于福建省市场监督管理局的正处级事业单位，是福建省内唯一的政府第三方纤维检验研究机构，是国内最早获得中国合格评定国家认可委员会（CNAS）认可的纤维检验机构，现有2个国家质检中心，国家纺织服装质检中心（福建）和国家服装服饰质检中心（福建），打造福州、晋江、惠安、石狮“一总部三基地”服务模式。
+        </div>
+    </div>
+
+    <div class="org-banner">
+        <div class="org-title">福建省纤维检验中心</div>
+        <div class="org-grid">
+            <div class="org-item">国家纺织服装产品质量检验检测中心（福建）</div>
+            <div class="org-item">国家服装服饰质量检验检测中心（福建）</div>
+            <div class="org-item">国家强制性标准实施情况统计分析点(服装)</div>
+            <div class="org-item">海关总署进口服装检验采信机构</div>
+            <div class="org-item">国际羽绒羽毛局(IDFB)认可实验室</div>
+            <div class="org-item">中央储备棉公证检验实验室(福州)</div>
+            <div class="org-item">美国消费品安全委员会(CPSC)认可实验室</div>
+            <div class="org-item">抗菌产业联盟(CIAA)合规抗菌检测实验室</div>
+            <div class="org-item">全国纺织品标委会验证实验室</div>
+            <div class="org-item">全国制鞋标委会验证实验室</div>
+            <div class="org-item">福建省纺织产品检测技术重点实验室</div>
+            <div class="org-item">福建省学生服装、童装童鞋、纺织面料风险监控站</div>
+            <div class="org-item">福建省中小企业公共服务示范平台</div>
+            <div class="org-item">福建省新型研发机构</div>
+            <div class="org-item">福建省服装纺织品标委会秘书处</div>
+        </div>
+    </div>
+
+    <!-- 联系信息：福州本部 -->
+    <div class="contact-block">
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.7 11.7 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 6a1 1 0 011-1h3.5a1 1 0 011 1 11.7 11.7 0 00.57 3.57 1 1 0 01-.24 1.02z"></path></svg>
+            </div>
+            <span class="contact-value">0591—87887663</span>
+        </div>
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"></path></svg>
+            </div>
+            <span class="contact-value">福建省福州市仓山区照屿路17号</span>
+        </div>
+    </div>
+
+    <!-- 联系信息：晋江检验部 -->
+    <div class="contact-block">
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.7 11.7 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 6a1 1 0 011-1h3.5a1 1 0 011 1 11.7 11.7 0 00.57 3.57 1 1 0 01-.24 1.02z"></path></svg>
+            </div>
+            <span class="contact-value">0595—88123970</span>
+        </div>
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"></path></svg>
+            </div>
+            <span class="contact-value">福建省晋江市世纪大道南段3001号三创园研发中心21号楼</span>
+        </div>
+    </div>
+
+    <!-- 联系信息：惠安实验室 -->
+    <div class="contact-block">
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.7 11.7 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 6a1 1 0 011-1h3.5a1 1 0 011 1 11.7 11.7 0 00.57 3.57 1 1 0 01-.24 1.02z"></path></svg>
+            </div>
+            <span class="contact-value">0595—87653970</span>
+        </div>
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"></path></svg>
+            </div>
+            <span class="contact-value">泉州市惠安县惠祥路49号3栋（第一高新技术孵化基地内）</span>
+        </div>
+    </div>
+
+    <!-- 联系信息：石狮办事处 -->
+    <div class="contact-block">
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.7 11.7 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 6a1 1 0 011-1h3.5a1 1 0 011 1 11.7 11.7 0 00.57 3.57 1 1 0 01-.24 1.02z"></path></svg>
+            </div>
+            <span class="contact-value">0595—88563970</span>
+        </div>
+        <div class="contact-row">
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"></path></svg>
+            </div>
+            <span class="contact-value">石狮市南洋路富达商厦一层（中石油加油站旁）</span>
+        </div>
+    </div>
+</div>
+
+<!-- ===== Tab3 企业信息 ===== -->
+<div class="content-area" id="tab-company">
+    <div class="card">
+        <div class="company-header">
+            <div class="company-name">生产单位信息 </div>
+        </div>
+        <div class="company-row">
+            <div class="company-label">单位名称</div>
+            <div class="company-value">福建南平市依尔婴服饰有限公司</div>
+        </div>
+        <div class="company-row">
+            <div class="company-label">信用代码</div>
+            <div class="company-value"> </div>
+        </div>
+        <div class="company-row">
+            <div class="company-label">注册地址</div>
+            <div class="company-value">福建省南平市延平区东溪路169号</div>
+        </div>
+        <div class="company-row">
+            <div class="company-label">联系方式</div>
+            <div class="company-value"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 页脚 ===== -->
+<div class="footer">
+     福建省纤维检验检测中心<br>
+     国家服装服饰质量检验检测中心（福建）<br>
+     国家纺织服装产品质量检验检测中心（福建）
+</div>
+
+<script>
+function switchTab(tab) {
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    document.querySelectorAll('.content-area').forEach(c => c.classList.remove('active'));
+    var tabs = {sample:0, intro:1, company:2};
+    document.querySelectorAll('.nav-item')[tabs[tab]].classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+}
+</script>
+
+
+
+</body></html>
